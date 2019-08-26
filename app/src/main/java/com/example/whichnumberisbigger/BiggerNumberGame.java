@@ -18,24 +18,26 @@ public class BiggerNumberGame {
         if(nu2 == nu1){
             nu1 += (int)((Math.random() * upperLimit+1) + lowerLimit);
             nu2 -= (int)((Math.random() * upperLimit+1) + lowerLimit);
-            setNu1(nu1);
-            setNu2(nu2);
+
         }
+        setNu1(nu1);
+        setNu2(nu2);
     }
 
-    public String checkAnswer(int answer){
-    int correctAnswer;
-    if(nu1 > nu2){
-        correctAnswer = nu1;
-    }
-    else{
-        correctAnswer = nu2;
-    }
+    public String checkAnswer(int answer) {
+    int correctAnswer = Math.max(nu1,nu2);
     if (answer == correctAnswer){
-        return "You can do basic maf YAY, your score is " + score;
         score++;
+        setScore(score);
+        return "You can do basic maf YAY, your score is " + score;}
 
-    }
+    else {
+        score--;
+        setScore(score);
+        return "You IDIOT HOW DO YOU GET THIS QUESTION WRONG, your score is " + score;
+        }
+
+
     }
     public int getNu1() {
         return nu1;
